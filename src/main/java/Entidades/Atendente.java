@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package back;
+package Entidades;
 
 /**
  *
@@ -12,6 +12,11 @@ package back;
 public class Atendente extends Usuario
 {
     private String CPF;
+
+    public Atendente(String CPF, String nome, String senha) {
+        super(nome, senha);
+        this.CPF = CPF;
+    }
 
     
     

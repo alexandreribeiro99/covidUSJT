@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package back;
+package Entidades;
 
 /**
  *
@@ -12,6 +12,12 @@ package back;
 public class Paciente extends Usuario
 {
     private boolean funSaude;
+
+    public Paciente(boolean funSaude, String dataVac, String nome, String senha) {
+        super(nome, senha);
+        this.funSaude = funSaude;
+        this.dataVac = dataVac;
+    }
     private String dataVac;
 
     

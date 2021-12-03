@@ -1,7 +1,7 @@
 
 package CONEXAO;
 
-import back.Usuario;
+import Entidades.*;
 import CONEXAO.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,24 +76,27 @@ public class DAO {
     }*/
     
     
-    /*public void inserirCurso(Curso curso) throws Exception {
+    public void inserirCurso(Administrador administrador) throws Exception {
         
         // 1º passo: definir a SQL:
-        String sql = "INSERT INTO tb_curso (nome, tipo) VALUES (?, ?) ";
+        String sql = "INSERT INTO tb_administrador (nome, senha, idade, endereco, cpf) VALUES (?, ?, ?, ?, ?) ";
         
         // 2º passo: obter uma conexão com o banco de dados:
-        Connection conn = ConexaoDB.obtemConexao();
+        Connection conn = ConnectionFactory.obtemConexao();
         
         // 3º passo: compilar o comando SQL:
         PreparedStatement pst = conn.prepareStatement(sql);
         
         // 4º passo: preencher os dados do SQL:
-        pst.setString(1, curso.getNome());
-        pst.setString(2, curso.getTipo());
+        pst.setString(1, administrador.getNome());
+        pst.setString(2, administrador.getSenha());
+        pst.setInt(2, administrador.getIdade());
+        pst.setString(2, administrador.getEndereco());
+        pst.setString(2, administrador.getCPF());
         
         // 5º passo: executar:
         pst.execute();
-    }*/
+    }
     
 }
 

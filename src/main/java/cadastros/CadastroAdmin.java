@@ -5,9 +5,9 @@
  */
 package cadastros;
 
-import CONEXAO.DAO;
+import Entidades.*;
+import CONEXAO.*;
 import cadastros.*;
-import back.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,13 +37,13 @@ public class CadastroAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ButtonVoltar = new javax.swing.JButton();
-        CampoIdade = new javax.swing.JTextField();
-        CampoCPF = new javax.swing.JTextField();
-        CampoNome = new javax.swing.JTextField();
-        CampoEndereco = new javax.swing.JTextField();
+        TextCampoIdade = new javax.swing.JTextField();
+        TextCampoCPF = new javax.swing.JTextField();
+        TextCampoNome = new javax.swing.JTextField();
+        TextCampoEndereco = new javax.swing.JTextField();
         ButtonCadastrar = new javax.swing.JButton();
         ButtonCancelar = new javax.swing.JButton();
-        CampoSenha = new javax.swing.JPasswordField();
+        TextCampoSenha = new javax.swing.JPasswordField();
 
         jTextField1.setText("jTextField1");
 
@@ -66,18 +66,18 @@ public class CadastroAdmin extends javax.swing.JFrame {
             }
         });
 
-        CampoIdade.setBackground(new java.awt.Color(255, 204, 204));
-        CampoIdade.setToolTipText("");
-        CampoIdade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Idade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
+        TextCampoIdade.setBackground(new java.awt.Color(255, 204, 204));
+        TextCampoIdade.setToolTipText("");
+        TextCampoIdade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Idade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
 
-        CampoCPF.setBackground(new java.awt.Color(255, 204, 204));
-        CampoCPF.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CPF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
+        TextCampoCPF.setBackground(new java.awt.Color(255, 204, 204));
+        TextCampoCPF.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CPF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
 
-        CampoNome.setBackground(new java.awt.Color(255, 204, 204));
-        CampoNome.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
+        TextCampoNome.setBackground(new java.awt.Color(255, 204, 204));
+        TextCampoNome.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
 
-        CampoEndereco.setBackground(new java.awt.Color(255, 204, 204));
-        CampoEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
+        TextCampoEndereco.setBackground(new java.awt.Color(255, 204, 204));
+        TextCampoEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
 
         ButtonCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         ButtonCadastrar.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
@@ -94,9 +94,9 @@ public class CadastroAdmin extends javax.swing.JFrame {
         ButtonCancelar.setText("Cancelar");
         ButtonCancelar.setBorder(new javax.swing.border.MatteBorder(null));
 
-        CampoSenha.setBackground(new java.awt.Color(255, 204, 204));
-        CampoSenha.setText("jPasswordField1");
-        CampoSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
+        TextCampoSenha.setBackground(new java.awt.Color(255, 204, 204));
+        TextCampoSenha.setText("jPasswordField1");
+        TextCampoSenha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic Medium", 0, 12))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,19 +107,19 @@ public class CadastroAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CampoEndereco)
+                            .addComponent(TextCampoEndereco)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(CampoCPF)
+                                .addComponent(TextCampoCPF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CampoIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(CampoNome)
+                                .addComponent(TextCampoIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextCampoNome)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(ButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(CampoSenha)))
+                            .addComponent(TextCampoSenha)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(jLabel1)))
@@ -131,15 +131,15 @@ public class CadastroAdmin extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(CampoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextCampoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CampoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextCampoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CampoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CampoIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextCampoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextCampoIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ButtonCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,7 +156,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -171,16 +171,18 @@ public class CadastroAdmin extends javax.swing.JFrame {
 
     private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
         // TODO add your handling code here:
-        String CPF = CampoCPF.getText();
-        int idade = CampoIdade.getText();
-        String nome = CampoNome.getText();
-        String endereco = CampoEndereco.getText();
         
-        Admistrador c = new Administrador(nome, endereco ,CPF, idade);
+        String CPF = TextCampoCPF.getText();
+        int idade = TextCampoIdade.getText();
+        String nome = TextCampoNome.getText();
+        String endereco = TextCampoEndereco.getText();
+        String senha = TextCampoSenha.getText();
+        
+        Administrador c = new Administrador(CPF, idade, nome, endereco, senha);
         
         int opcao = JOptionPane.showConfirmDialog(this, 
-                "Confirma a inclusão do curso?", 
-                "Gerenciador de cursos",
+                "Confirme se deseja cadastrar um novo administrador?", 
+                "Gerenciador",
                 JOptionPane.YES_NO_OPTION);
         
         if (opcao == JOptionPane.YES_OPTION) {
@@ -191,35 +193,24 @@ public class CadastroAdmin extends javax.swing.JFrame {
                 dao.inserirCurso(c);
                 
                 JOptionPane.showMessageDialog(this, 
-                        "Curso salvo com sucesso!");
+                        "Administrador cadastrado com sucesso!");
                 
-                CampoNome.setText("");
-                CampoCPF.setText("");
-                CampoNome.setText("");
-                CampoNome.setText("");
-                
-                
-                buscarCursos();
+                TextCampoCPF.setText("");
+                TextCampoIdade.setText("");
+                TextCampoNome.setText("");
+                TextCampoEndereco.setText("");
+                TextCampoSenha.setText("");
+
             }
             catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(this, 
-                        "Falha ao salvar o curso! Tente novamente!");
+                        "Falha!");
             }
             
         }
         
     }                                        
-
-    private void cursosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        
-        Curso c = (Curso) cursosComboBox.getSelectedItem();
-        
-        idTextField.setText(String.valueOf(c.getId()));
-        nomeTextField.setText(c.getNome());
-        tipoTextField.setText(c.getTipo());
-        
-    }                                              
 
     /**
      * @param args the command line arguments
@@ -238,20 +229,20 @@ public class CadastroAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CursosTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CursosTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CursosTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CursosTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CursosTela().setVisible(true);
+                new CadastroAdmin().setVisible(true);
             }
         });
     }
@@ -299,11 +290,11 @@ public class CadastroAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonCadastrar;
     private javax.swing.JButton ButtonCancelar;
     private javax.swing.JButton ButtonVoltar;
-    private javax.swing.JTextField CampoCPF;
-    private javax.swing.JTextField CampoEndereco;
-    private javax.swing.JTextField CampoIdade;
-    private javax.swing.JTextField CampoNome;
-    private javax.swing.JPasswordField CampoSenha;
+    private javax.swing.JTextField TextCampoCPF;
+    private javax.swing.JTextField TextCampoEndereco;
+    private javax.swing.JTextField TextCampoIdade;
+    private javax.swing.JTextField TextCampoNome;
+    private javax.swing.JPasswordField TextCampoSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

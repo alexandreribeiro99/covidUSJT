@@ -35,7 +35,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -55,13 +55,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="CampoEndereco" max="32767" attributes="0"/>
+                              <Component id="TextCampoEndereco" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="CampoCPF" max="32767" attributes="0"/>
+                                  <Component id="TextCampoCPF" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="CampoIdade" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="TextCampoIdade" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="CampoNome" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TextCampoNome" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="ButtonVoltar" min="-2" pref="103" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -69,7 +69,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="ButtonCancelar" min="-2" pref="102" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="CampoSenha" max="32767" attributes="0"/>
+                              <Component id="TextCampoSenha" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -87,15 +87,15 @@
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="CampoNome" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="TextCampoNome" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="CampoSenha" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Component id="TextCampoSenha" min="-2" pref="61" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="CampoEndereco" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="TextCampoEndereco" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CampoCPF" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="CampoIdade" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="TextCampoCPF" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="TextCampoIdade" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -140,7 +140,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonVoltarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoIdade">
+        <Component class="javax.swing.JTextField" name="TextCampoIdade">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -155,7 +155,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoCPF">
+        <Component class="javax.swing.JTextField" name="TextCampoCPF">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -169,7 +169,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoNome">
+        <Component class="javax.swing.JTextField" name="TextCampoNome">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -182,8 +182,11 @@
               </Border>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoEndereco">
+        <Component class="javax.swing.JTextField" name="TextCampoEndereco">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -232,7 +235,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="CampoSenha">
+        <Component class="javax.swing.JPasswordField" name="TextCampoSenha">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package back;
+package Entidades;
 
 /**
  *
@@ -11,15 +11,22 @@ package back;
  */
 public class Administrador extends Usuario
 {
-    private String CPF;
+    String CPF;
+    int idade;
+    String nome;
+    String endereco;
+    String senha;
 
-    public Administrador(String CPF, String nome, String senha) {
+    public Administrador(String CPF, int idade, String nome, String endereco, String senha) {
         super(nome, senha);
         this.CPF = CPF;
-        this.endereco = endereco;
+        this.idade = idade;
         this.nome = nome;
+        this.endereco = endereco;
         this.senha = senha;
     }
+
+    
 
     
     
