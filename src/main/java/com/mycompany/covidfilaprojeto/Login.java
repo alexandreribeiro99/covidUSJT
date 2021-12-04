@@ -5,9 +5,10 @@
  */
 package com.mycompany.covidfilaprojeto;
 
-import CONEXAO.DAO;
-import Entidades.Usuario;
-import cadastros.*;
+import view.CadastroAtendente;
+import view.Cadastro;
+import controller.DAO;
+import model.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -224,6 +225,11 @@ public class Login extends javax.swing.JFrame {
         {
             if(dao.existe(usuario))
             {
+                this.dispose();
+                CadastroAtendente  cad = new CadastroAtendente();
+                cad.setVisible(true);
+                
+            }else if(dao.existeAdmin(usuario)){
                 this.dispose();
                 Cadastro cad = new Cadastro();
                 cad.setVisible(true);

@@ -15,7 +15,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Sair"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
@@ -198,7 +198,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
               <Events>
@@ -218,7 +218,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Acessar"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
               <Events>
@@ -232,16 +232,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Esqueceu sua senha?"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\vasqu\OneDrive\Documentos\NetBeansProjects\CovidFilaProjeto\src\main\java\img\logox30.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="CampoUsuario">
               <Properties>
@@ -288,7 +283,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xa9;&#xfe0f; Copyright - 2021"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
         </Component>
