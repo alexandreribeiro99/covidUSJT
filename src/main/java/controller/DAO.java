@@ -8,6 +8,7 @@ import model.Atendente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * Classe responsável por executar ações relacionadas
@@ -170,7 +171,84 @@ public class DAO {
         // 5º passo: executar:
         pst.execute();
     }
+        
+        public ArrayList<Paciente> obterPacientes() throws Exception{
+             // 1º passo: definir a SQL:
+            String sql = "SELECT * FROM tb_paciente WHERE dataVac IS NULL  ORDER BY idade desc, funSaude = 1;";
+            // 2º passo: obter uma conexão com o banco de dados:
+            Connection conn = ConnectionFactory.obtemConexao();
+            // 3º passo: compilar o comando SQL:
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            
+            ResultSet resultado = pst.executeQuery();
+            
+            ArrayList<Paciente> lista = new ArrayList<Paciente>();
+            while (resultado.next()){
+                
+            String nome = resultado.getString("nome");
+            String idade = resultado.getString("idade");
+            String endereco = resultado.getString("endereco");
+            boolean funcSaude = resultado.getBoolean("funSaude");
+            
+                Paciente p = new Paciente(nome,idade , endereco , funcSaude);
+                
+                lista.add(p);
+                
+                
+            }
+            
+            return lista;
+            
+            
+        }
+        
+        
+       public void vacinar(Paciente pac) throws Exception {
+        
+        // 1º passo: definir a SQL:
+        String sql = "INSERT INTO tb_paciente (nome, idade, endereco, funSaude, dataVac) VALUES (?, ?, ?, ?, ?) ";
+        
+        // 2º passo: obter uma conexão com o banco de dados:
+        Connection conn = ConnectionFactory.obtemConexao();
+        
+        // 3º passo: compilar o comando SQL:
+        PreparedStatement pst = conn.prepareStatement(sql);
+        
+        // 4º passo: preencher os dados do SQL:
+        pst.setString(1, pac.getNome());
+        pst.setString(2, pac.getIdade());
+        pst.setString(3, pac.getEndereco());
+        pst.setBoolean(4, pac.isFunSaude());
+        pst.setString(5, pac.getDataVac());
+        
+        // 5º passo: executar:
+        pst.execute();
+    }
     
+       //buscar paciente pelo id e mostrar na tela o nome
+       public void buscarPaciente () throws Exception {
+        
+        // 1º passo: definir a SQL:
+        String sql = "SELECT nome FROM tb_paciente WHERE dataVac IS NULL  ORDER BY idade desc, funSaude = 1 LIMIT 1;";
+        
+        // 2º passo: obter uma conexão com o banco de dados:
+        Connection conn = ConnectionFactory.obtemConexao();
+        
+        // 3º passo: compilar o comando SQL:
+        PreparedStatement pst = conn.prepareStatement(sql);
+        
+        //
+        ResultSet resultado = pst.executeQuery();
+        
+       
+        // 5º passo: executar:
+        pst.execute();
+        
+        String nome = resultado.getString("nome"); 
+        
+    }
+
 }
 
         // 1º passo: definir a SQL:

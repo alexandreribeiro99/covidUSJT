@@ -25,6 +25,10 @@ public class Paciente {
 
     }
 
+    public Paciente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getNome() {
         return nome;
     }
@@ -64,4 +68,13 @@ public class Paciente {
     public void setDataVac(String dataVac) {
         this.dataVac = dataVac;
     }
+    
+    @Override
+    public String toString(){
+        String retorno = (this.nome) + (this.endereco) + (this.idade) ;     
+        return retorno;
+
+    }
+    
+    
 }
