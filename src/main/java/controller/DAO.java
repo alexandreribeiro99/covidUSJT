@@ -191,6 +191,7 @@ public class DAO {
             String endereco = resultado.getString("endereco");
             boolean funcSaude = resultado.getBoolean("funSaude");
             
+            
                 Paciente p = new Paciente(nome,idade , endereco , funcSaude);
                 
                 lista.add(p);
@@ -227,7 +228,7 @@ public class DAO {
     }
     
        //buscar paciente pelo id e mostrar na tela o nome
-       public void buscarPaciente () throws Exception {
+       public static String buscarPaciente() throws Exception {
         
         // 1º passo: definir a SQL:
         String sql = "SELECT nome FROM tb_paciente WHERE dataVac IS NULL  ORDER BY idade desc, funSaude = 1 LIMIT 1;";
@@ -237,16 +238,21 @@ public class DAO {
         
         // 3º passo: compilar o comando SQL:
         PreparedStatement pst = conn.prepareStatement(sql);
-        
-        //
+
+        //4° passo: 
         ResultSet resultado = pst.executeQuery();
-        
-       
-        // 5º passo: executar:
-        pst.execute();
-        
-        String nome = resultado.getString("nome"); 
-        
+        String nome = "";
+
+            
+             while (resultado.next()){
+                 
+              nome = resultado.getString("nome");
+   
+             System.out.println(nome);
+            
+             }
+                return nome;
+               
     }
 
 }

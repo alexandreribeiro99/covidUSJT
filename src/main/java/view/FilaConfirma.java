@@ -218,7 +218,6 @@ public class FilaConfirma extends javax.swing.JFrame {
         DAO dao = new DAO();
         try {
             
-             
             LabelMostrarPaciente.setText(dao.buscarPaciente());
             
         } catch (Exception ex) {
