@@ -10,6 +10,7 @@ import view.Cadastro;
 import controller.DAO;
 import model.Usuario;
 import javax.swing.JOptionPane;
+import view.FilaConfirma;
 
 /**
  *
@@ -226,7 +227,7 @@ public class Login extends javax.swing.JFrame {
             if(dao.existe(usuario))
             {
                 this.dispose();
-                CadastroAtendente  cad = new CadastroAtendente();
+                FilaConfirma  cad = new FilaConfirma();
                 cad.setVisible(true);
                 
             }else if(dao.existeAdmin(usuario)){

@@ -16,12 +16,14 @@ public class Paciente {
     private String endereco;
     private boolean funcSaude;
     private String dataVac;
+    private int Id;
 
-    public Paciente(String nome, String idade, String endereco, boolean funcSaude) {
+    public Paciente(int Id,String nome, String idade, String endereco, boolean funcSaude) {
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
         this.funcSaude = funcSaude;
+        this.Id = Id;
 
     }
 
@@ -36,6 +38,15 @@ public class Paciente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    //brlu
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+    //brlu
 
     public String getIdade() {
         return idade;

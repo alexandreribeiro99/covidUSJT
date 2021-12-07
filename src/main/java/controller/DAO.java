@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * 
  */
 public class DAO {
-    
+            int id;
     /**
      * Verifica se um usuário existe ou não no banco de dados
      * @param usuario o usuário a ser procurado
@@ -70,40 +70,7 @@ public class DAO {
         return resultado.next();
         
     }
-    
-   /*public ArrayList<Curso> obterCursos() throws Exception {
-    
-        // 1º passo: definir a SQL:
-        String sql = "SELECT * FROM tb_curso";
-        
-        // 2º passo: obter uma conexão com o banco de dados:
-        Connection conn = ConnectionFactory.obtemConexao();
-        
-        // 3º passo: compilar o comando SQL:
-        PreparedStatement pst = conn.prepareStatement(sql);
-        
-        // 4º passo: executar e verificar o resultado:
-        ResultSet resultado = pst.executeQuery();
-        
-        // Criar uma lista para guardar todos os objetos:
-        ArrayList<Curso> lista = new ArrayList<Curso>();
-        
-        // Laço de repetição para percorrer todos os registros que retornaram do banco:
-        while (resultado.next()) {
-            
-            int id = resultado.getInt("id");
-            String nome = resultado.getString("nome");
-            String tipo = resultado.getString("tipo");
-            
-            Curso c = new Curso(id, nome, tipo);
-            
-            lista.add(c);
-        }
-        
-        return lista;
-    }*/
-    
-    
+  
     public void inserirAdmin(Administrador adm) throws Exception {
         
         // 1º passo: definir a SQL:
@@ -182,83 +149,47 @@ public class DAO {
             
             
             ResultSet resultado = pst.executeQuery();
-            
             ArrayList<Paciente> lista = new ArrayList<Paciente>();
             while (resultado.next()){
-                
+            int id = resultado.getInt(1);
             String nome = resultado.getString("nome");
             String idade = resultado.getString("idade");
             String endereco = resultado.getString("endereco");
             boolean funcSaude = resultado.getBoolean("funSaude");
             
-            
-                Paciente p = new Paciente(nome,idade , endereco , funcSaude);
+
+                Paciente p = new Paciente(id,nome,idade,endereco,funcSaude);
                 
                 lista.add(p);
-                
-                
             }
+                        
             
             return lista;
-            
-            
+
         }
         
         
-       public void vacinar(Paciente pac) throws Exception {
-        
+       public int vacinar(int id) throws Exception {
+
         // 1º passo: definir a SQL:
-        String sql = "INSERT INTO tb_paciente (nome, idade, endereco, funSaude, dataVac) VALUES (?, ?, ?, ?, ?) ";
+        String sql = "UPDATE tb_paciente SET dataVac = CURRENT_TIMESTAMP() where id = ?;";
         
         // 2º passo: obter uma conexão com o banco de dados:
         Connection conn = ConnectionFactory.obtemConexao();
-        
+
         // 3º passo: compilar o comando SQL:
         PreparedStatement pst = conn.prepareStatement(sql);
-        
+
         // 4º passo: preencher os dados do SQL:
-        pst.setString(1, pac.getNome());
-        pst.setString(2, pac.getIdade());
-        pst.setString(3, pac.getEndereco());
-        pst.setBoolean(4, pac.isFunSaude());
-        pst.setString(5, pac.getDataVac());
-        
-        // 5º passo: executar:
-        pst.execute();
-    }
+        pst.setInt(1,id);
     
-       //buscar paciente pelo id e mostrar na tela o nome
-       public static String buscarPaciente() throws Exception {
+      // 5º passo: executar:
+        pst.execute();
         
-        // 1º passo: definir a SQL:
-        String sql = "SELECT nome FROM tb_paciente WHERE dataVac IS NULL  ORDER BY idade desc, funSaude = 1 LIMIT 1;";
-        
-        // 2º passo: obter uma conexão com o banco de dados:
-        Connection conn = ConnectionFactory.obtemConexao();
-        
-        // 3º passo: compilar o comando SQL:
-        PreparedStatement pst = conn.prepareStatement(sql);
-
-        //4° passo: 
-        ResultSet resultado = pst.executeQuery();
-        String nome = "";
-
-            
-             while (resultado.next()){
-                 
-              nome = resultado.getString("nome");
-   
-             System.out.println(nome);
-            
-             }
-                return nome;
-               
+        return 0;
+       
     }
-
+       
+      
 }
 
-        // 1º passo: definir a SQL:
-        // 2º passo: obter uma conexão com o banco de dados:
-        // 3º passo: compilar o comando SQL:
-        // 4º passo: preencher os dados do SQL:
-        // 5º passo: executar e verificar o resultado:
