@@ -39,7 +39,7 @@ public class Cadastro extends javax.swing.JFrame {
         ButtonCadPaciente = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Engrenagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +62,7 @@ public class Cadastro extends javax.swing.JFrame {
         ButtonCadAdmin.setBackground(new java.awt.Color(255, 204, 204));
         ButtonCadAdmin.setText("ADMINISTRADOR");
         ButtonCadAdmin.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 204, 204)));
+        ButtonCadAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ButtonCadAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonCadAdminActionPerformed(evt);
@@ -71,6 +72,7 @@ public class Cadastro extends javax.swing.JFrame {
         ButtonCadAtend.setBackground(new java.awt.Color(204, 255, 204));
         ButtonCadAtend.setText("ATENDENTE");
         ButtonCadAtend.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 255, 204)));
+        ButtonCadAtend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ButtonCadAtend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonCadAtendActionPerformed(evt);
@@ -80,6 +82,7 @@ public class Cadastro extends javax.swing.JFrame {
         ButtonCadPaciente.setBackground(new java.awt.Color(255, 255, 204));
         ButtonCadPaciente.setText("PACIENTE");
         ButtonCadPaciente.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 204)));
+        ButtonCadPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ButtonCadPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonCadPacienteActionPerformed(evt);
@@ -95,11 +98,20 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel3.setMaximumSize(new java.awt.Dimension(548, 662));
         jLabel3.setMinimumSize(new java.awt.Dimension(548, 662));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\pp\\Desktop\\img covid usjt\\Silhueta-Engrenagem-PNG (1).png")); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        Engrenagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\pp\\Desktop\\img covid usjt\\Silhueta-Engrenagem-PNG (1).png")); // NOI18N
+        Engrenagem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Engrenagem.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                EngrenagemAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        Engrenagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                EngrenagemMouseClicked(evt);
             }
         });
 
@@ -111,7 +123,7 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel4)
+                        .addComponent(Engrenagem)
                         .addGap(23, 23, 23)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -138,7 +150,7 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4))
+                        .addComponent(Engrenagem))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,11 +239,15 @@ public class Cadastro extends javax.swing.JFrame {
         cadPac.setVisible(true);
     }//GEN-LAST:event_ButtonCadPacienteActionPerformed
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void EngrenagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EngrenagemMouseClicked
         // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_EngrenagemMouseClicked
+
+    private void EngrenagemAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_EngrenagemAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EngrenagemAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -272,10 +288,10 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JButton ButtonCadAdmin;
     private javax.swing.JButton ButtonCadAtend;
     private javax.swing.JButton ButtonCadPaciente;
+    private javax.swing.JLabel Engrenagem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -82,7 +82,7 @@ public class Paciente {
     
     @Override
     public String toString(){
-        String retorno = (this.nome) + (this.endereco) + (this.idade) ;     
+        String retorno = (this.nome);     
         return retorno;
 
     }
