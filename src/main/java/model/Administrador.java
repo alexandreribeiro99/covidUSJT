@@ -10,18 +10,28 @@ package model;
  * @author vasqu
  */
 public class Administrador{
+    private int id;
     private String CPF;
     private String idade;
     private String nome;
     private String endereco;
     private String senha;
 
-    public Administrador(String nome, String senha, String idade, String endereco, String cpf) {
+    public Administrador(int id ,String nome, String senha, String idade, String endereco, String cpf) {
+        this.id = id;
         this.CPF = cpf;
         this.idade = idade;
         this.nome = nome;
         this.endereco = endereco;
         this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIdade() {

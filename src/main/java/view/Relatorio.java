@@ -6,9 +6,15 @@ package view;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 import controller.DAO;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.logging.Level;
@@ -26,7 +32,14 @@ public class Relatorio extends javax.swing.JFrame {
      */
     public Relatorio() {
         initComponents();
+        centralizarComponente();
+         this.setResizable(false);
     }
+    
+    public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2); 
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,9 +112,9 @@ public class Relatorio extends javax.swing.JFrame {
         ButtonVoltar.setText("Voltar");
         ButtonVoltar.setBorder(new javax.swing.border.MatteBorder(null));
         ButtonVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonVoltarActionPerformed(evt);
+        ButtonVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtonVoltarMouseClicked(evt);
             }
         });
 
@@ -211,16 +224,51 @@ public class Relatorio extends javax.swing.JFrame {
                         DiaFim[d],
                         MesFim[e],
                         AnoFim[f]);
+       
+       String DataInicio = AnoInicio[c] +"-"+ DiaInicio[a]+"-"+ MesInicio[b];
+       String DataFim = AnoFim[f] +"-"+ DiaFim[d]+"-"+ MesFim[e];
       
+       String dataIniRe = DiaInicio[a]+"/"+MesInicio[b]+"/"+AnoInicio[c];
+       String dataFiRe = DiaFim[d]+"/"+MesFim[e]+"/"+AnoFim[f];
+       
+       
         try
         {
 
-            PdfWriter.getInstance(documento, new FileOutputStream("documento.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream("Relatório.pdf"));
             documento.open();
-            documento.add(new Paragraph("RELATORIO 1"));
-            documento.add(new Paragraph("TANTOS DIAS" + retornoDias));
-            documento.add(new Paragraph("AQUI TRAS" + dao.relatorio1()));
-
+            documento.add(new Paragraph("Relatório com a média de pacientes vacinados"));
+            documento.add(new Paragraph("Do dia: " + dataIniRe + ", até o dia " + dataFiRe));
+            
+            documento.add(new Paragraph(" "));
+            documento.add(new Paragraph(" "));
+            
+            documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio1(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio1(DataInicio,DataFim)/retornoDias));
+            
+            documento.add(new Paragraph(" "));
+            documento.add(new Paragraph(" "));
+            
+            documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio2(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio2(DataInicio,DataFim)/retornoDias));
+            
+            documento.add(new Paragraph(" "));
+            documento.add(new Paragraph(" "));
+            
+            documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio3(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio3(DataInicio,DataFim)/retornoDias));
+            
+            documento.add(new Paragraph(" "));
+            documento.add(new Paragraph(" "));
+            
+            documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio4(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio4(DataInicio,DataFim)/retornoDias));
+            
+ 
         }catch (FileNotFoundException | DocumentException ex) {
 
             System.out.println("Erro" +ex);
@@ -237,12 +285,12 @@ public class Relatorio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonGerarPdfActionPerformed
 
-    private void ButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarActionPerformed
+    private void ButtonVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonVoltarMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Gerenciamento cad = new Gerenciamento();
+        Cadastro cad = new Cadastro();       
         cad.setVisible(true);
-    }//GEN-LAST:event_ButtonVoltarActionPerformed
+    }//GEN-LAST:event_ButtonVoltarMouseClicked
 
     /**
      * @param args the command line arguments

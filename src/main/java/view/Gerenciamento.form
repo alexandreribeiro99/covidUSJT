@@ -200,7 +200,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ComboBoxPaciente" min="-2" pref="319" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ButtonRemove1" pref="154" max="32767" attributes="0"/>
+                      <Component id="ButtonRemovePac" pref="154" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -210,7 +210,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ButtonRemove1" pref="33" max="32767" attributes="0"/>
+                          <Component id="ButtonRemovePac" pref="33" max="32767" attributes="0"/>
                           <Component id="ComboBoxPaciente" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="34" max="32767" attributes="0"/>
@@ -219,7 +219,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="ButtonRemove1">
+            <Component class="javax.swing.JButton" name="ButtonRemovePac">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="ff" type="rgb"/>
@@ -235,7 +235,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonRemove1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonRemovePacActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="ComboBoxPaciente">
@@ -276,7 +276,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ComboBoxAtendente" min="-2" pref="326" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ButtonRemove2" pref="154" max="32767" attributes="0"/>
+                      <Component id="ButtonRemoveAten" pref="154" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -286,7 +286,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ButtonRemove2" pref="33" max="32767" attributes="0"/>
+                          <Component id="ButtonRemoveAten" pref="33" max="32767" attributes="0"/>
                           <Component id="ComboBoxAtendente" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="36" max="32767" attributes="0"/>
@@ -295,7 +295,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="ButtonRemove2">
+            <Component class="javax.swing.JButton" name="ButtonRemoveAten">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="ff" type="rgb"/>
@@ -310,6 +310,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonRemoveAtenActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="ComboBoxAtendente">
               <Properties>
@@ -349,7 +352,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ComboBoxAdm" min="-2" pref="322" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ButtonRemove" pref="154" max="32767" attributes="0"/>
+                      <Component id="ButtonRemoveAdm" pref="154" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -359,7 +362,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ButtonRemove" pref="33" max="32767" attributes="0"/>
+                          <Component id="ButtonRemoveAdm" pref="33" max="32767" attributes="0"/>
                           <Component id="ComboBoxAdm" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -368,7 +371,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="ButtonRemove">
+            <Component class="javax.swing.JButton" name="ButtonRemoveAdm">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="ff" type="rgb"/>
@@ -383,6 +386,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonRemoveAdmActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="ComboBoxAdm">
               <Properties>

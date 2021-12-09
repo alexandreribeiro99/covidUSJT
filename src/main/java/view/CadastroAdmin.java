@@ -2,6 +2,8 @@
 package view;
 
 import controller.DAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import model.Administrador;
 import javax.swing.JOptionPane;
 
@@ -16,9 +18,16 @@ public class CadastroAdmin extends javax.swing.JFrame {
      */
     public CadastroAdmin() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        centralizarComponente();
+        this.setResizable(false);
+   
     }
 
+     public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2); 
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -196,7 +205,7 @@ public class CadastroAdmin extends javax.swing.JFrame {
         String cpf = TextCampoCPF.getText();
  
         
-        Administrador adm = new Administrador( nome,  senha,  idade,  endereco,  cpf);
+        Administrador adm = new Administrador(0, nome,  senha,  idade,  endereco,  cpf);
         
         int opcao = JOptionPane.showConfirmDialog(this,"Confirma cadastro?");
         

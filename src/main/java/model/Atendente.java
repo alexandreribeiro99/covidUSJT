@@ -10,6 +10,30 @@ package model;
  * @author vasqu
  */
 public class Atendente{
+    
+    private int id;
+    private String CPF;
+    private String idade;
+    private String nome;
+    private String endereco;
+    private String senha;
+
+    public Atendente(int id, String nome, String senha, String idade, String endereco, String cpf) {
+        this.id = id;
+        this.CPF = cpf;
+        this.idade = idade;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCPF() {
         return CPF;
@@ -51,18 +75,12 @@ public class Atendente{
         this.senha = senha;
     }
     
-    private String CPF;
-    private String idade;
-    private String nome;
-    private String endereco;
-    private String senha;
+        @Override
+    public String toString(){
+        String retorno = (this.nome);     
+        return retorno;
 
-    public Atendente(String nome, String senha, String idade, String endereco, String cpf) {
-        this.CPF = cpf;
-        this.idade = idade;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.senha = senha;
     }
+
     
 }

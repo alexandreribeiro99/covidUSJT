@@ -4,7 +4,9 @@
  */
 package view;
 
-import controller.DAO;
+import controller.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Paciente;
+import model.*;
 
 /**
  *
@@ -26,10 +28,17 @@ public class FilaConfirma extends javax.swing.JFrame {
     public FilaConfirma() {
         initComponents();
         buscarPaciente();
+        centralizarComponente();
+        this.setResizable(false);
     }
+    
+    public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2); 
+    }
+    
      
- int i = 0;
- int b ;
+ int i ;
+ int b;
 
     
     public void buscarPaciente(){
@@ -134,15 +143,6 @@ public class FilaConfirma extends javax.swing.JFrame {
         LabelMostrarPaciente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelMostrarPaciente.setToolTipText("");
         LabelMostrarPaciente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-        LabelMostrarPaciente.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                LabelMostrarPacienteAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setForeground(new java.awt.Color(77, 77, 77));
@@ -151,11 +151,6 @@ public class FilaConfirma extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnVacinar.setText("Vacinar");
-        btnVacinar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVacinarMouseClicked(evt);
-            }
-        });
         btnVacinar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVacinarActionPerformed(evt);
@@ -212,22 +207,6 @@ public class FilaConfirma extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane2AncestorAdded
 
-    private void LabelMostrarPacienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_LabelMostrarPacienteAncestorAdded
-        DAO dao = new DAO();
-        try {
-            
-          //  LabelMostrarPaciente.setText(dao.buscarPaciente());
-            
-        } catch (Exception ex) {
-            Logger.getLogger(FilaConfirma.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_LabelMostrarPacienteAncestorAdded
-
-    private void btnVacinarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVacinarMouseClicked
-
-    }//GEN-LAST:event_btnVacinarMouseClicked
-
     private void btnVacinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacinarActionPerformed
     
       
@@ -242,7 +221,7 @@ public class FilaConfirma extends javax.swing.JFrame {
                 buscarPaciente();
                 JOptionPane.showMessageDialog(this, "Paciente vacinado ");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Falha ao cadastrar admin");
+                JOptionPane.showMessageDialog(this, "Falha na vacinação!");
             }
             
         }

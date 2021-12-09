@@ -17,6 +17,7 @@ public class Cadastro extends javax.swing.JFrame {
     public Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -91,6 +92,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setForeground(new java.awt.Color(77, 77, 77));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("©️ Copyright - 2021");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -100,15 +102,6 @@ public class Cadastro extends javax.swing.JFrame {
 
         Engrenagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\pp\\Desktop\\img covid usjt\\Silhueta-Engrenagem-PNG (1).png")); // NOI18N
         Engrenagem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Engrenagem.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                EngrenagemAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         Engrenagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EngrenagemMouseClicked(evt);
@@ -120,29 +113,29 @@ public class Cadastro extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(Engrenagem)
+                .addGap(120, 120, 120)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(192, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Engrenagem)
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ButtonCadPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ButtonCadAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ButtonCadAtend, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ButtonCadPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCadAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCadAtend, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(jLabel5)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel2)))
+                .addGap(96, 96, 96))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,17 +146,17 @@ public class Cadastro extends javax.swing.JFrame {
                         .addComponent(Engrenagem))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonCadAtend, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonCadAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonCadPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonCadAtend, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonCadAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonCadPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
@@ -223,6 +216,7 @@ public class Cadastro extends javax.swing.JFrame {
         this.dispose();
         CadastroAtendente cadAtend = new CadastroAtendente();
         cadAtend.setVisible(true);
+        
     }//GEN-LAST:event_ButtonCadAtendActionPerformed
 
     private void ButtonCadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadAdminActionPerformed
@@ -230,6 +224,8 @@ public class Cadastro extends javax.swing.JFrame {
         this.dispose();
         CadastroAdmin cadAdm = new CadastroAdmin();
         cadAdm.setVisible(true);
+    
+        
     }//GEN-LAST:event_ButtonCadAdminActionPerformed
 
     private void ButtonCadPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadPacienteActionPerformed
@@ -237,17 +233,17 @@ public class Cadastro extends javax.swing.JFrame {
         this.dispose();
         CadastroPaciente cadPac = new CadastroPaciente();
         cadPac.setVisible(true);
+        
     }//GEN-LAST:event_ButtonCadPacienteActionPerformed
 
     private void EngrenagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EngrenagemMouseClicked
-        // TODO add your handling code here:
-        
+       
+         this.dispose();
+        Relatorio relatorio = new Relatorio();
+       relatorio.setVisible(true);
+
         
     }//GEN-LAST:event_EngrenagemMouseClicked
-
-    private void EngrenagemAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_EngrenagemAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EngrenagemAncestorAdded
 
     /**
      * @param args the command line arguments

@@ -14,9 +14,13 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import controller.DAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import model.Administrador;
+import model.Atendente;
 import model.Paciente;
 
 /**
@@ -30,10 +34,21 @@ public class Gerenciamento extends javax.swing.JFrame {
      */
     public Gerenciamento() {
         initComponents();
+        //this.setLocationRelativeTo(null);
+        centralizarComponente();
         buscarPacienteRemover();
+        buscarAtendenteRemover();
+        buscarAdmRemover();
+        this.setResizable(false);
     }
 
-    int i = 0;
+        public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2); 
+    }
+    
+    int i;
+    int a;
+    int ad;
     
        public void buscarPacienteRemover(){
         
@@ -54,12 +69,48 @@ public class Gerenciamento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, 
                     "Lista de Pacientes indisponível! Tente novamente!");
         }
-        
-        
-       
-       
-       
+
        }
+       
+       public void buscarAtendenteRemover(){
+
+        DAO dao = new DAO();
+        try {
+            ArrayList<Atendente> atendente = dao.obterAtendentesRemover();
+
+            Atendente vetorAtendente[] = new Atendente[atendente.size()];
+            a = 0;
+            atendente.forEach(e -> vetorAtendente[a++] = (Atendente) e);
+
+            ComboBoxAtendente.setModel(
+                    new DefaultComboBoxModel(vetorAtendente)); 
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, 
+                    "Lista de atendentes indisponível! Tente novamente!");
+        }
+       }
+
+       public void buscarAdmRemover(){
+
+        DAO dao = new DAO();
+        try {
+            ArrayList<Administrador> administrador = dao.obterAdmRemover();
+
+            Administrador vetorAdministrador[] = new Administrador[administrador.size()];
+            a = 0;
+            administrador.forEach(e -> vetorAdministrador[a++] = (Administrador) e);
+
+            ComboBoxAdm.setModel(
+                    new DefaultComboBoxModel(vetorAdministrador)); 
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, 
+                    "Lista de administradores indisponível! Tente novamente!");
+        }
+       }
+       
+       
     
     
     /**
@@ -78,13 +129,13 @@ public class Gerenciamento extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         ButtonVoltar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        ButtonRemove1 = new javax.swing.JButton();
+        ButtonRemovePac = new javax.swing.JButton();
         ComboBoxPaciente = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        ButtonRemove2 = new javax.swing.JButton();
+        ButtonRemoveAten = new javax.swing.JButton();
         ComboBoxAtendente = new javax.swing.JComboBox<>();
         CampoRemoveAdm = new javax.swing.JPanel();
-        ButtonRemove = new javax.swing.JButton();
+        ButtonRemoveAdm = new javax.swing.JButton();
         ComboBoxAdm = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
@@ -122,13 +173,13 @@ public class Gerenciamento extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paciente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic", 0, 14))); // NOI18N
 
-        ButtonRemove1.setBackground(new java.awt.Color(255, 153, 153));
-        ButtonRemove1.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
-        ButtonRemove1.setText("Remover");
-        ButtonRemove1.setBorder(new javax.swing.border.MatteBorder(null));
-        ButtonRemove1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonRemovePac.setBackground(new java.awt.Color(255, 153, 153));
+        ButtonRemovePac.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
+        ButtonRemovePac.setText("Remover");
+        ButtonRemovePac.setBorder(new javax.swing.border.MatteBorder(null));
+        ButtonRemovePac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonRemove1ActionPerformed(evt);
+                ButtonRemovePacActionPerformed(evt);
             }
         });
 
@@ -142,7 +193,7 @@ public class Gerenciamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(ComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonRemove1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(ButtonRemovePac, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,7 +201,7 @@ public class Gerenciamento extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonRemove1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(ButtonRemovePac, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(ComboBoxPaciente))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -158,10 +209,15 @@ public class Gerenciamento extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Atendente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic", 0, 14))); // NOI18N
 
-        ButtonRemove2.setBackground(new java.awt.Color(255, 153, 153));
-        ButtonRemove2.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
-        ButtonRemove2.setText("Remover");
-        ButtonRemove2.setBorder(new javax.swing.border.MatteBorder(null));
+        ButtonRemoveAten.setBackground(new java.awt.Color(255, 153, 153));
+        ButtonRemoveAten.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
+        ButtonRemoveAten.setText("Remover");
+        ButtonRemoveAten.setBorder(new javax.swing.border.MatteBorder(null));
+        ButtonRemoveAten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonRemoveAtenActionPerformed(evt);
+            }
+        });
 
         ComboBoxAtendente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -173,7 +229,7 @@ public class Gerenciamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(ComboBoxAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonRemove2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(ButtonRemoveAten, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(
@@ -181,7 +237,7 @@ public class Gerenciamento extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonRemove2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(ButtonRemoveAten, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(ComboBoxAtendente))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -189,10 +245,15 @@ public class Gerenciamento extends javax.swing.JFrame {
         CampoRemoveAdm.setBackground(new java.awt.Color(255, 204, 204));
         CampoRemoveAdm.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic", 0, 14))); // NOI18N
 
-        ButtonRemove.setBackground(new java.awt.Color(255, 153, 153));
-        ButtonRemove.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
-        ButtonRemove.setText("Remover");
-        ButtonRemove.setBorder(new javax.swing.border.MatteBorder(null));
+        ButtonRemoveAdm.setBackground(new java.awt.Color(255, 153, 153));
+        ButtonRemoveAdm.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
+        ButtonRemoveAdm.setText("Remover");
+        ButtonRemoveAdm.setBorder(new javax.swing.border.MatteBorder(null));
+        ButtonRemoveAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonRemoveAdmActionPerformed(evt);
+            }
+        });
 
         ComboBoxAdm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -204,7 +265,7 @@ public class Gerenciamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(ComboBoxAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(ButtonRemoveAdm, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addGap(33, 33, 33))
         );
         CampoRemoveAdmLayout.setVerticalGroup(
@@ -212,7 +273,7 @@ public class Gerenciamento extends javax.swing.JFrame {
             .addGroup(CampoRemoveAdmLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(CampoRemoveAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(ButtonRemoveAdm, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(ComboBoxAdm))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -303,19 +364,85 @@ public class Gerenciamento extends javax.swing.JFrame {
         cad.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void ButtonRemove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRemove1ActionPerformed
-         DAO dao = new DAO();
+    private void ButtonRemovePacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRemovePacActionPerformed
+        DAO dao = new DAO();
          Paciente p = (Paciente) ComboBoxPaciente.getSelectedItem();
+        if (p == null)
+        {
+            JOptionPane.showMessageDialog(this, "Não há pacientes para remover");
+        }
          int id =  p.getId();
+         int opcao = JOptionPane.showConfirmDialog(this,"Confirma remoção?");
+
+
+        if (opcao == JOptionPane.YES_OPTION){ 
         try {
-        
+            System.out.println("Debugando" + id);
             dao.removerPaciente(id);
             buscarPacienteRemover();
+            JOptionPane.showMessageDialog(this, "Paciente removido com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(Gerenciamento.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Falha na remoção!");
         }
+        }
+        else if (opcao == JOptionPane.NO_OPTION)
+        {JOptionPane.showMessageDialog(this, "Paciente não removido!");}
      
-    }//GEN-LAST:event_ButtonRemove1ActionPerformed
+    }//GEN-LAST:event_ButtonRemovePacActionPerformed
+
+    private void ButtonRemoveAtenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRemoveAtenActionPerformed
+        DAO dao = new DAO();
+        Atendente a = (Atendente) ComboBoxAtendente.getSelectedItem();
+        if (a == null)
+        {
+            JOptionPane.showMessageDialog(this, "Não há atendentes para remover");
+        }
+        int id = a.getId();
+        int opcao = JOptionPane.showConfirmDialog(this,"Confirma remoção?");
+
+        if (opcao == JOptionPane.YES_OPTION){
+        try
+        {
+            dao.removerAtendente(id);
+            buscarAtendenteRemover();
+            JOptionPane.showMessageDialog(this, "Atendente removido com sucesso!");
+        }
+        catch (Exception ex) {
+            Logger.getLogger(Gerenciamento.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Falha na remoção!");
+        } 
+        }
+        else if (opcao == JOptionPane.NO_OPTION)
+        {JOptionPane.showMessageDialog(this, "Usuário não removido!");}
+
+    }//GEN-LAST:event_ButtonRemoveAtenActionPerformed
+
+    private void ButtonRemoveAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRemoveAdmActionPerformed
+        DAO dao = new DAO();
+        Administrador a = (Administrador) ComboBoxAdm.getSelectedItem();
+        if (a == null)
+        {
+            JOptionPane.showMessageDialog(this, "Não há administradores para remover");
+        }
+        int id = a.getId();
+        int opcao = JOptionPane.showConfirmDialog(this,"Confirma remoção?");
+
+        if (opcao == JOptionPane.YES_OPTION){
+        try
+        {
+            dao.removerAdm(id);
+            buscarAdmRemover();
+            JOptionPane.showMessageDialog(this, "Administrador removido com sucesso!");
+        }
+        catch (Exception ex) {
+            Logger.getLogger(Gerenciamento.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Falha na remoção!");
+        } 
+        }
+        else if (opcao == JOptionPane.NO_OPTION)
+        {JOptionPane.showMessageDialog(this, "Usuário não removido!");}
+    }//GEN-LAST:event_ButtonRemoveAdmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,9 +480,9 @@ public class Gerenciamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonRemove;
-    private javax.swing.JButton ButtonRemove1;
-    private javax.swing.JButton ButtonRemove2;
+    private javax.swing.JButton ButtonRemoveAdm;
+    private javax.swing.JButton ButtonRemoveAten;
+    private javax.swing.JButton ButtonRemovePac;
     private javax.swing.JButton ButtonVoltar;
     private javax.swing.JPanel CampoRemoveAdm;
     private javax.swing.JComboBox<String> ComboBoxAdm;

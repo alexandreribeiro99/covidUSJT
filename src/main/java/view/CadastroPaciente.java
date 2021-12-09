@@ -6,6 +6,8 @@
 package view;
 
 import controller.DAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import model.Paciente;
 import javax.swing.JOptionPane;
 
@@ -20,7 +22,12 @@ public class CadastroPaciente extends javax.swing.JFrame {
      */
     public CadastroPaciente() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        centralizarComponente();
+        this.setResizable(false);
+    }
+    
+    public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2); 
     }
 
     /**

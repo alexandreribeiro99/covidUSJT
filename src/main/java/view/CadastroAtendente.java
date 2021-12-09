@@ -6,6 +6,8 @@
 package view;
 
 import controller.DAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import model.Atendente;
 import javax.swing.JOptionPane;
 
@@ -20,7 +22,12 @@ public class CadastroAtendente extends javax.swing.JFrame {
      */
     public CadastroAtendente() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        centralizarComponente();
+         this.setResizable(false);
+    }
+    
+    public void centralizarComponente() { 
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize(); Dimension dw = getSize(); setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2); 
     }
 
     /**
@@ -208,7 +215,7 @@ public class CadastroAtendente extends javax.swing.JFrame {
         String cpf = CampoCPF.getText();
         String idade = CampoIdade.getText();
         
-        Atendente aten = new Atendente(nome,  senha,  idade,  endereco,  cpf);
+        Atendente aten = new Atendente(0,nome,  senha,  idade,  endereco,  cpf);
         
         int opcao = JOptionPane.showConfirmDialog(this,"Confirma cadastro?");
         

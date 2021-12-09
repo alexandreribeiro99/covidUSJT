@@ -141,7 +141,7 @@ public class DAO {
         
         public ArrayList<Paciente> obterPacientes() throws Exception{
              // 1º passo: definir a SQL:
-            String sql = "SELECT * FROM tb_paciente WHERE dataVac IS NULL  ORDER BY idade desc, funSaude = 1;";
+            String sql = "SELECT * FROM tb_paciente WHERE dataVac IS NULL ORDER BY idade desc, funSaude = 1;";
             // 2º passo: obter uma conexão com o banco de dados:
             Connection conn = ConnectionFactory.obtemConexao();
             // 3º passo: compilar o comando SQL:
@@ -196,12 +196,73 @@ public class DAO {
             return lista;
 
         }
+           
+                      public ArrayList<Atendente> obterAtendentesRemover() throws Exception{
+             // 1º passo: definir a SQL:
+            String sql = "SELECT * FROM tb_atendente;";
+            // 2º passo: obter uma conexão com o banco de dados:
+            Connection conn = ConnectionFactory.obtemConexao();
+            // 3º passo: compilar o comando SQL:
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            
+            ResultSet resultado = pst.executeQuery();
+            ArrayList<Atendente> lista = new ArrayList<Atendente>();
+            while (resultado.next()){
+            int id = resultado.getInt(1);
+            String cpf = resultado.getString("CPF");
+            String nome = resultado.getString("nome");
+            String idade = resultado.getString("idade");
+            String endereco = resultado.getString("endereco");
+            String senha = resultado.getString("senha");
+            
+
+                Atendente a = new Atendente(id,nome,senha,idade,endereco,cpf);
+                
+                lista.add(a);
+            }
+                        
+            
+            return lista;
+
+        }
+           
+           public ArrayList<Administrador> obterAdmRemover() throws Exception{
+             // 1º passo: definir a SQL:
+            String sql = "SELECT * FROM tb_administrador;";
+            // 2º passo: obter uma conexão com o banco de dados:
+            Connection conn = ConnectionFactory.obtemConexao();
+            // 3º passo: compilar o comando SQL:
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            
+            ResultSet resultado = pst.executeQuery();
+            ArrayList<Administrador> lista = new ArrayList<Administrador>();
+            while (resultado.next()){
+            int id = resultado.getInt(1);
+            String cpf = resultado.getString("CPF");
+            String nome = resultado.getString("nome");
+            String idade = resultado.getString("idade");
+            String endereco = resultado.getString("endereco");
+            String senha = resultado.getString("senha");
+            
+
+                Administrador ad = new Administrador(id,nome,senha,idade,endereco,cpf);
+                
+                lista.add(ad);
+            }
+                        
+            
+            return lista;
+
+        }
+        
         
         
        public int vacinar(int id) throws Exception {
 
         // 1º passo: definir a SQL:
-        String sql = "UPDATE tb_paciente SET dataVac = CURRENT_DATE() where id = ;";
+        String sql = "UPDATE tb_paciente SET dataVac = CURRENT_DATE() where id = ?";
         
         // 2º passo: obter uma conexão com o banco de dados:
         Connection conn = ConnectionFactory.obtemConexao();
@@ -220,30 +281,130 @@ public class DAO {
     }
        
        
-        public int relatorio1() throws Exception {
+        public static int relatorio1(String DataInicio, String DataFim) throws Exception {
 
             // 1º passo: definir a SQL:
-            String sql = "SELECT count(*) FROM tb_paciente WHERE idade > '90';";
+            String sql = "SELECT * FROM tb_paciente WHERE idade > '90' AND dataVac >= ? AND dataVac <= ?;";
   
 
             // 2º passo: obter uma conexão com o banco de dados:
             Connection conn = ConnectionFactory.obtemConexao();
             // 3º passo: compilar o comando SQL:
             PreparedStatement pst = conn.prepareStatement(sql);
-
+            pst.setString(1, DataInicio);
+            pst.setString(2, DataFim);
             ResultSet resultado = pst.executeQuery();
-            
-                pst.execute();
-            
-           // int idosos = resultado.getInt(1);
-            int idosos = resultado.getInt(1);
+
              
-            System.out.println("ESSE SÃO OS IDOSOS" + idosos);
             
-            return idosos;
-          
+            String nome = "nd";
+            int contPacientes = 0;
+            while (resultado.next()){
+            
+                nome = resultado.getString("nome");
+                contPacientes++;
+            
+            }
+           
+            return contPacientes;
        
     }
+        
+        
+        public static int relatorio2(String DataInicio, String DataFim) throws Exception {
+
+            // 1º passo: definir a SQL:
+            String sql = "SELECT * FROM tb_paciente WHERE idade >= 70 AND idade < 90 AND dataVac >= ? AND dataVac <= ?;";
+  
+
+            // 2º passo: obter uma conexão com o banco de dados:
+            Connection conn = ConnectionFactory.obtemConexao();
+            // 3º passo: compilar o comando SQL:
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, DataInicio);
+            pst.setString(2, DataFim);
+
+            ResultSet resultado = pst.executeQuery();
+
+             
+            
+            String nome = "nd";
+            int contPacientes = 0;
+            while (resultado.next()){
+            
+                nome = resultado.getString("nome");
+                contPacientes++;
+            
+            }
+            
+            return contPacientes;
+       
+    }
+        
+         public static int relatorio3(String DataInicio, String DataFim) throws Exception {
+
+            // 1º passo: definir a SQL:
+            String sql = "SELECT * FROM tb_paciente WHERE idade >= 50 AND idade < 70 AND dataVac >= ? AND dataVac <= ?;";
+  
+
+            // 2º passo: obter uma conexão com o banco de dados:
+            Connection conn = ConnectionFactory.obtemConexao();
+            // 3º passo: compilar o comando SQL:
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, DataInicio);
+            pst.setString(2, DataFim);
+
+            ResultSet resultado = pst.executeQuery();
+
+             
+            
+            String nome = "nd";
+            int contPacientes = 0;
+            while (resultado.next()){
+            
+                nome = resultado.getString("nome");
+                contPacientes++;
+            
+            }
+
+            return contPacientes;
+       
+    }
+         
+         
+         
+         public static int relatorio4(String DataInicio, String DataFim) throws Exception {
+
+            // 1º passo: definir a SQL:
+            String sql = "SELECT * FROM tb_paciente WHERE idade < 50 AND dataVac >= ? AND dataVac <= ?;";
+  
+
+            // 2º passo: obter uma conexão com o banco de dados:
+            Connection conn = ConnectionFactory.obtemConexao();
+            // 3º passo: compilar o comando SQL:
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, DataInicio);
+            pst.setString(2, DataFim);
+
+            ResultSet resultado = pst.executeQuery();
+
+             
+            
+            String nome = "nd";
+            int contPacientes = 0;
+            while (resultado.next()){
+            
+                nome = resultado.getString("nome");
+                contPacientes++;
+            
+            }
+       
+            return contPacientes;
+       
+    }
+        
+        
+        
         
         
         public int removerPaciente(int id) throws Exception {
@@ -266,7 +427,52 @@ public class DAO {
         return 0;
        
     }
+        
+        public int removerAtendente(int id) throws Exception {
+
+        // 1º passo: definir a SQL:
+        String sql = "DELETE FROM tb_atendente WHERE id = ?;";
+        
+        // 2º passo: obter uma conexão com o banco de dados:
+        Connection conn = ConnectionFactory.obtemConexao();
+
+        // 3º passo: compilar o comando SQL:
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        // 4º passo: preencher os dados do SQL:
+        pst.setInt(1,id);
+    
+      // 5º passo: executar:
+        pst.execute();
+        
+        return 0;
+       
+    }
+        
+        public int removerAdm(int id) throws Exception {
+
+        // 1º passo: definir a SQL:
+        String sql = "DELETE FROM tb_administrador WHERE id = ?;";
+        
+        // 2º passo: obter uma conexão com o banco de dados:
+        Connection conn = ConnectionFactory.obtemConexao();
+
+        // 3º passo: compilar o comando SQL:
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        // 4º passo: preencher os dados do SQL:
+        pst.setInt(1,id);
+    
+      // 5º passo: executar:
+        pst.execute();
+        
+        return 0;
+       
+    }
       
 }
+
+      
+
 
 
