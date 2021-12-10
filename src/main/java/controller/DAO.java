@@ -197,7 +197,7 @@ public class DAO {
 
         }
            
-                      public ArrayList<Atendente> obterAtendentesRemover() throws Exception{
+            public ArrayList<Atendente> obterAtendentesRemover() throws Exception{
              // 1º passo: definir a SQL:
             String sql = "SELECT * FROM tb_atendente;";
             // 2º passo: obter uma conexão com o banco de dados:
@@ -281,7 +281,7 @@ public class DAO {
     }
        
        
-        public static int relatorio1(String DataInicio, String DataFim) throws Exception {
+        public static double relatorio1(String DataInicio, String DataFim) throws Exception {
 
             // 1º passo: definir a SQL:
             String sql = "SELECT * FROM tb_paciente WHERE idade > '90' AND dataVac >= ? AND dataVac <= ?;";
@@ -311,7 +311,7 @@ public class DAO {
     }
         
         
-        public static int relatorio2(String DataInicio, String DataFim) throws Exception {
+        public static double relatorio2(String DataInicio, String DataFim) throws Exception {
 
             // 1º passo: definir a SQL:
             String sql = "SELECT * FROM tb_paciente WHERE idade >= 70 AND idade < 90 AND dataVac >= ? AND dataVac <= ?;";
@@ -341,7 +341,7 @@ public class DAO {
        
     }
         
-         public static int relatorio3(String DataInicio, String DataFim) throws Exception {
+         public static double relatorio3(String DataInicio, String DataFim) throws Exception {
 
             // 1º passo: definir a SQL:
             String sql = "SELECT * FROM tb_paciente WHERE idade >= 50 AND idade < 70 AND dataVac >= ? AND dataVac <= ?;";
@@ -373,7 +373,7 @@ public class DAO {
          
          
          
-         public static int relatorio4(String DataInicio, String DataFim) throws Exception {
+         public static double relatorio4(String DataInicio, String DataFim) throws Exception {
 
             // 1º passo: definir a SQL:
             String sql = "SELECT * FROM tb_paciente WHERE idade < 50 AND dataVac >= ? AND dataVac <= ?;";

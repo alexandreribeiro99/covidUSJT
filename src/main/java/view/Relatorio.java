@@ -12,11 +12,15 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 import controller.DAO;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.IntervaloEmDias;
@@ -225,8 +229,8 @@ public class Relatorio extends javax.swing.JFrame {
                         MesFim[e],
                         AnoFim[f]);
        
-       String DataInicio = AnoInicio[c] +"-"+ DiaInicio[a]+"-"+ MesInicio[b];
-       String DataFim = AnoFim[f] +"-"+ DiaFim[d]+"-"+ MesFim[e];
+       String DataInicio = AnoInicio[c] +"-"+ DiaInicio[a] +"-"+ MesInicio[b];
+       String DataFim = AnoFim[f] +"-"+ DiaFim[d] +"-"+ MesFim[e];
       
        String dataIniRe = DiaInicio[a]+"/"+MesInicio[b]+"/"+AnoInicio[c];
        String dataFiRe = DiaFim[d]+"/"+MesFim[e]+"/"+AnoFim[f];
@@ -234,6 +238,7 @@ public class Relatorio extends javax.swing.JFrame {
        
         try
         {
+            DecimalFormat df = new DecimalFormat("##0.00");
 
             PdfWriter.getInstance(documento, new FileOutputStream("Relatório.pdf"));
             documento.open();
@@ -245,28 +250,28 @@ public class Relatorio extends javax.swing.JFrame {
             
             documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
             documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio1(DataInicio,DataFim)));
-            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio1(DataInicio,DataFim)/retornoDias));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + (df.format(dao.relatorio1(DataInicio,DataFim)/retornoDias))));
             
             documento.add(new Paragraph(" "));
             documento.add(new Paragraph(" "));
             
             documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
-            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio2(DataInicio,DataFim)));
-            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio2(DataInicio,DataFim)/retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas entre 70 a 90 anos: " + dao.relatorio2(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + (df.format(dao.relatorio2(DataInicio,DataFim)/retornoDias))));
             
             documento.add(new Paragraph(" "));
             documento.add(new Paragraph(" "));
             
             documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
-            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio3(DataInicio,DataFim)));
-            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio3(DataInicio,DataFim)/retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas entre 50 a 70 anos: " + dao.relatorio3(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + (df.format(dao.relatorio3(DataInicio,DataFim)/retornoDias))));
             
             documento.add(new Paragraph(" "));
             documento.add(new Paragraph(" "));
             
             documento.add(new Paragraph("Quantidade de dias: " +" " + retornoDias));
-            documento.add(new Paragraph("Quantidade de pessoas vacinadas acima de 90 anos: " + dao.relatorio4(DataInicio,DataFim)));
-            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + dao.relatorio4(DataInicio,DataFim)/retornoDias));
+            documento.add(new Paragraph("Quantidade de pessoas vacinadas abaixo de 50 anos: " + dao.relatorio4(DataInicio,DataFim)));
+            documento.add(new Paragraph("Aqui está a média de vacinação diária da idade acima: " + (df.format(dao.relatorio4(DataInicio,DataFim)/retornoDias))));
             
  
         }catch (FileNotFoundException | DocumentException ex) {
@@ -283,12 +288,18 @@ public class Relatorio extends javax.swing.JFrame {
         {
             documento.close();
         }
+        
+        try {
+            Desktop.getDesktop().open(new File("Relatório.pdf"));
+        } catch (IOException ex) {
+            Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ButtonGerarPdfActionPerformed
 
     private void ButtonVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonVoltarMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Cadastro cad = new Cadastro();       
+        Gerenciamento cad = new Gerenciamento();       
         cad.setVisible(true);
     }//GEN-LAST:event_ButtonVoltarMouseClicked
 

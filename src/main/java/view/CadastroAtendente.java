@@ -118,8 +118,13 @@ public class CadastroAtendente extends javax.swing.JFrame {
 
         ButtonRemove.setBackground(new java.awt.Color(255, 153, 153));
         ButtonRemove.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
-        ButtonRemove.setText("Remover");
+        ButtonRemove.setText("Limpar");
         ButtonRemove.setBorder(new javax.swing.border.MatteBorder(null));
+        ButtonRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonRemoveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -235,12 +240,19 @@ public class CadastroAtendente extends javax.swing.JFrame {
 
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        Cadastro cad = new Cadastro();
+        cad.setVisible(true);
+    }//GEN-LAST:event_ButtonCancelarActionPerformed
+
+    private void ButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRemoveActionPerformed
+        // TODO add your handling code here:
         CampoNome.setText("");
         CampoSenha.setText("");
         CampoEndereco.setText("");
         CampoCPF.setText("");
         CampoIdade.setText("");
-    }//GEN-LAST:event_ButtonCancelarActionPerformed
+    }//GEN-LAST:event_ButtonRemoveActionPerformed
 
     /**
      * @param args the command line arguments
